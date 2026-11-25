@@ -1,6 +1,8 @@
 # Admin guide
 
-Everything about your site can be changed from **https://ssmith46.github.io/admin/** without touching code.
+Everything about your site can be changed from **https://ssmith46.github.io/edit-da-website/** without touching code.
+
+That address isn't linked anywhere on the site. To change it, edit `adminPath` in `tools/config.mjs` and commit; the next deploy moves the admin, and the old address stops working. A less obvious address only keeps casual visitors away. What actually protects the admin is that GitHub lets only your account publish.
 
 ## Signing in
 

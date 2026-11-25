@@ -10,7 +10,8 @@
  *   2. Render every route of every site to HTML (engine/core/render.js).
  *   3. Copy each site's media next to its pages.
  *   4. Bundle CSS (public/css + every module's .css) and copy client JS.
- *   5. Copy the admin app and the engine (the admin imports it for previews).
+ *   5. Copy the admin app (to the address set in tools/config.mjs) and the
+ *      engine (the admin imports it for previews).
  *
  * The same engine renders the admin's live preview, so what you see while
  * editing is exactly what this build produces.
@@ -22,6 +23,7 @@ import { walk, writeFile, copyDir, readContent, shortHash } from './lib/files.mj
 import { buildBundles } from '../engine/core/bundle.js';
 import { listRoutes, renderRoute } from '../engine/core/render.js';
 import { registry } from '../engine/registry.js';
+import config from './config.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -47,6 +49,28 @@ function checkBasePaths(sites) {
   }
 }
 
+/**
+ * Make sure the admin's address is a single safe word that no site, page or
+ * collection uses (otherwise one would silently overwrite the other).
+ */
+export function checkAdminPath(sites, adminPath) {
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(adminPath || '')) {
+    throw new Error(`adminPath "${adminPath}" in tools/config.mjs must be one lowercase word (letters, numbers, dashes)`);
+  }
+  if (['engine', 'assets', 'media'].includes(adminPath)) throw new Error(`adminPath "${adminPath}" is reserved by the build`);
+  for (const bundle of Object.values(sites)) {
+    const [first] = bundle.site.basePath.split('/').filter(Boolean);
+    if (first === adminPath) throw new Error(`Site "${bundle.id}" uses the admin's address /${adminPath}/`);
+    if (bundle.site.basePath !== '/') continue;
+    for (const page of Object.values(bundle.pages)) {
+      if (String(page.slug || '').split('/')[0] === adminPath) throw new Error(`Page "${page.$id}" uses the admin's address /${adminPath}/`);
+    }
+    for (const c of bundle.site.collections) {
+      if ((c.route || c.id) === adminPath) throw new Error(`Collection "${c.id}" uses the admin's address /${adminPath}/`);
+    }
+  }
+}
+
 /** sitemap.xml for one site (only when it is indexable and has a public URL). */
 function sitemap(bundle, routes) {
   const origin = String(bundle.site.url || '').replace(/\/+$/, '');
@@ -60,9 +84,9 @@ function sitemap(bundle, routes) {
 
 /**
  * Build everything into `outDir`.
- * @param {{ root?: string, outDir?: string, extraHead?: string, quiet?: boolean }} [options]
+ * @param {{ root?: string, outDir?: string, extraHead?: string, quiet?: boolean, adminPath?: string }} [options]
  */
-export async function build({ root = ROOT, outDir = path.join(root, '_site'), extraHead = '', quiet = false } = {}) {
+export async function build({ root = ROOT, outDir = path.join(root, '_site'), extraHead = '', quiet = false, adminPath = config.adminPath } = {}) {
   const started = Date.now();
   const log = quiet ? () => {} : (...a) => console.log(...a);
 
@@ -73,6 +97,7 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
   const { jsonFiles, mediaPaths } = readContent(root);
   const sites = buildBundles(jsonFiles, mediaPaths);
   checkBasePaths(sites);
+  checkAdminPath(sites, adminPath);
   const warnings = Object.values(sites).flatMap((b) => b.errors.map((e) => `${e.path}: ${e.message}`));
 
   // 2. Assets (hash first so pages can reference versioned URLs)
@@ -106,8 +131,9 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
     log(`  ✓ ${bundle.site.title} (${bundle.id}) → ${bundle.site.basePath}  ${routes.length} pages`);
   }
 
-  // 4. Admin + engine (the admin imports ../../engine/* for live previews)
-  copyDir(path.join(root, 'admin'), path.join(outDir, 'admin'));
+  // 4. Admin + engine. The admin sits one folder deep (/<adminPath>/) and
+  //    imports ../../engine/* for live previews, so the engine stays at /engine/.
+  copyDir(path.join(root, 'admin'), path.join(outDir, adminPath));
   copyDir(path.join(root, 'engine'), path.join(outDir, 'engine'));
 
   // 5. Host files
@@ -118,7 +144,8 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
 
   for (const w of warnings) console.warn(`  ⚠ ${w}`);
   log(`Built ${pageCount} pages for ${Object.keys(sites).length} site(s) in ${Date.now() - started} ms → ${path.relative(process.cwd(), outDir) || '.'}`);
-  return { sites, pageCount, warnings, version };
+  log(`  Admin → /${adminPath}/`);
+  return { sites, pageCount, warnings, version, adminPath };
 }
 
 // Run when invoked directly: `node tools/build.mjs`

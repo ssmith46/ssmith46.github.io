@@ -18,7 +18,7 @@ export async function createPage(app) {
     validate: (v) => {
       const id = slugify(v);
       if (!id) return 'Please use some letters or numbers.';
-      if (RESERVED_SLUGS.includes(id)) return `“${id}” is reserved — try another name.`;
+      if (RESERVED_SLUGS.includes(id) || id === app.config.adminPath) return `“${id}” is reserved — try another name.`;
       if (app.ws.exists(app.paths.page(id)) || id === 'home') return 'A page with that address already exists.';
       return null;
     },

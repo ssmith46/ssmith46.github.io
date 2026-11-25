@@ -55,7 +55,7 @@ export async function openNewSite(app) {
               ? 'Give your site a name.'
               : !slug
                 ? 'Choose an address.'
-                : RESERVED_SLUGS.includes(slug) || taken.has(basePath) || takenIds.has(slug) || app.bundle?.pages?.[slug]
+                : RESERVED_SLUGS.includes(slug) || slug === app.config.adminPath || taken.has(basePath) || takenIds.has(slug) || app.bundle?.pages?.[slug]
                   ? `The address /${slug}/ is already in use.`
                   : null;
             if (problem) {

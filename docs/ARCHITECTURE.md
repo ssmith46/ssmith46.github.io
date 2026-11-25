@@ -66,6 +66,8 @@ Runs in Node (the build) and in the browser (the admin preview), so it uses no D
 
 ## Admin (`admin/`)
 
+The build publishes the admin at `/<adminPath>/`, set in `tools/config.mjs`. It's never linked from the site, and the build refuses to start if a page, collection or site uses that address. Inside the admin, `config.adminPath` is read from the URL it's served at.
+
 | Path | Role |
 | --- | --- |
 | `js/main.js` | Boot: pick storage → sign in → load the workspace → start the shell |

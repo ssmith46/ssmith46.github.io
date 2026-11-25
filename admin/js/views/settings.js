@@ -140,7 +140,7 @@ export default {
             onchange: (e) => {
               const next = normalizeBasePath(slugify(e.target.value.replace(/\//g, ' ')) || doc.basePath);
               const first = next.split('/').filter(Boolean)[0];
-              if (RESERVED_SLUGS.includes(first) || otherSites.some((b) => b.site.basePath === next)) {
+              if (RESERVED_SLUGS.includes(first) || first === app.config.adminPath || otherSites.some((b) => b.site.basePath === next)) {
                 app.toast(`${next} is already taken.`, { type: 'error' });
                 e.target.value = doc.basePath;
                 return;

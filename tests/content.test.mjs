@@ -13,7 +13,8 @@ import { readContent } from '../tools/lib/files.mjs';
 import { buildBundles } from '../engine/core/bundle.js';
 import { createContext } from '../engine/core/context.js';
 import { registry } from '../engine/registry.js';
-import { build } from '../tools/build.mjs';
+import { build, checkAdminPath } from '../tools/build.mjs';
+import config from '../tools/config.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { jsonFiles, mediaPaths } = readContent(ROOT);
@@ -75,9 +76,19 @@ test('the full build succeeds', async () => {
     assert.ok(result.pageCount > 0);
     assert.ok(fs.existsSync(path.join(out, 'index.html')));
     assert.ok(fs.existsSync(path.join(out, 'assets/site.css')));
-    assert.ok(fs.existsSync(path.join(out, 'admin/index.html')));
+    assert.ok(fs.existsSync(path.join(out, config.adminPath, 'index.html')), 'admin is published at its configured address');
+    assert.ok(!fs.existsSync(path.join(out, 'admin')) || config.adminPath === 'admin', 'no leftover /admin/ copy');
     assert.ok(fs.existsSync(path.join(out, 'engine/registry.js')), 'admin needs the engine for previews');
   } finally {
     fs.rmSync(out, { recursive: true, force: true });
   }
+});
+
+test('the admin address is validated', () => {
+  assert.doesNotThrow(() => checkAdminPath(sites, config.adminPath));
+  assert.throws(() => checkAdminPath(sites, 'Not Valid'), /one lowercase word/);
+  assert.throws(() => checkAdminPath(sites, 'assets'), /reserved/);
+  const rootSite = Object.values(sites).find((b) => b.site.basePath === '/');
+  const somePage = Object.values(rootSite.pages).find((p) => p.slug);
+  assert.throws(() => checkAdminPath(sites, somePage.slug), /uses the admin's address/);
 });

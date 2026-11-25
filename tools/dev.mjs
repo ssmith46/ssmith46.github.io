@@ -4,7 +4,8 @@
  * Local development server. Zero dependencies.
  *
  *   node tools/dev.mjs            → http://localhost:4000  (site)
- *                                   http://localhost:4000/admin/  (admin, "local mode")
+ *                                   http://localhost:4000/<adminPath>/  (admin, "local mode";
+ *                                   adminPath is set in tools/config.mjs)
  *
  * - Rebuilds _site/ whenever content/, engine/, public/ or admin/ change and
  *   live-reloads open site pages.
@@ -21,6 +22,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFile } from 'node:child_process';
 import { walk, gitBlobSha, writeFile, MIME } from './lib/files.mjs';
+import config from './config.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, '_site');
@@ -193,5 +195,5 @@ const server = http.createServer((req, res) => {
 await rebuild('startup');
 server.listen(PORT, HOST, () => {
   console.log(`\n  Site   http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PORT}/`);
-  console.log(`  Admin  http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PORT}/admin/  (local mode — edits save to content/)\n`);
+  console.log(`  Admin  http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PORT}/${config.adminPath}/  (local mode — edits save to content/)\n`);
 });

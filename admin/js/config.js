@@ -17,4 +17,9 @@ export default {
   },
   /** Folder that holds all editable content (must match engine/core/bundle.js). */
   contentRoot: 'content',
+  /**
+   * The admin's own address (set in tools/config.mjs, e.g. "edit-da-website"),
+   * read from the URL it's served at. Pages and sites may not reuse it.
+   */
+  adminPath: location.pathname.split('/').filter(Boolean)[0] || 'admin',
 };

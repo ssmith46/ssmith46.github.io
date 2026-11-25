@@ -107,7 +107,7 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
   }
 
   // 4. Admin + engine (the admin imports ../../engine/* for live previews)
-  copyDir(path.join(root, 'admin'), path.join(outDir, 'admin'));
+  copyDir(path.join(root, 'admin'), path.join(outDir, 'edit-da-website'));
   copyDir(path.join(root, 'engine'), path.join(outDir, 'engine'));
 
   // 5. Host files

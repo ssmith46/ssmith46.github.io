@@ -1,0 +1,20 @@
+{
+  "title": "Ship Classification Accuracy (CNN)",
+  "summary": "An image-classification deep learning project comparing a custom CNN with a VGG16 transfer-learning model.",
+  "date": "2024-09",
+  "dateLabel": "Fall 2024",
+  "tags": [
+    "Python",
+    "Keras",
+    "Deep Learning",
+    "VGG16"
+  ],
+  "links": [
+    {
+      "label": "Source code",
+      "link": "https://github.com/ssmith46/ship_Identification_CNN"
+    }
+  ],
+  "body": "## Overview\nAn image classification deep learning project focused on how accurately a model can identify ships.\n\n## What I did\n- Trained a convolutional neural network model to evaluate accuracy of image classification.\n- Leveraged the **VGG16** convolutional base model to compare performance with a custom-trained CNN.\n- Built the project with the **Keras** API.",
+  "featured": true
+}

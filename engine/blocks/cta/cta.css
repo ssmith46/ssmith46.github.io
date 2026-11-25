@@ -1,0 +1,97 @@
+/* Block: Call to action (engine/blocks/cta/cta.js) */
+
+.cta {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) auto;
+  align-items: center;
+  gap: 2rem 3rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cta__heading {
+  font-size: clamp(1.9rem, 4vw, 2.85rem);
+}
+
+.cta__body {
+  margin-top: 1rem;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+}
+
+.cta__actions {
+  display: grid;
+  gap: 1rem;
+  justify-items: end;
+}
+
+.cta--card {
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+/* Inverted banner: dark-on-light becomes light-on-dark and vice versa */
+.cta--banner {
+  padding: clamp(2.5rem, 6vw, 4.5rem);
+  border-radius: var(--radius-xl);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.cta--banner::before {
+  content: '';
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 60%;
+  aspect-ratio: 1;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--accent), transparent);
+  opacity: 0.55;
+  filter: blur(20px);
+}
+
+.cta--banner .eyebrow {
+  color: var(--accent);
+}
+
+.cta--banner .prose {
+  color: color-mix(in srgb, var(--bg) 72%, var(--text));
+}
+
+.cta--banner .button--secondary {
+  background: transparent;
+  color: var(--bg);
+  border-color: color-mix(in srgb, var(--bg) 35%, transparent);
+}
+
+.cta--banner .button--secondary:hover {
+  border-color: var(--bg);
+}
+
+.cta--banner .social-link {
+  color: color-mix(in srgb, var(--bg) 70%, transparent);
+}
+
+.cta--banner .social-link:hover {
+  color: var(--bg);
+  background: color-mix(in srgb, var(--bg) 12%, transparent);
+}
+
+.cta--plain {
+  padding-block: 1rem;
+}
+
+@media (max-width: 52rem) {
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta__actions {
+    justify-items: start;
+  }
+}

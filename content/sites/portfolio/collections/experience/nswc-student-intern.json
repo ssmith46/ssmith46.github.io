@@ -1,0 +1,17 @@
+{
+  "role": "Student Intern",
+  "organization": "Naval Surface Warfare Center",
+  "location": "Dahlgren, VA",
+  "start": "2023-05",
+  "end": "2025-06",
+  "highlights": [
+    "Developed and implemented behavioral functionality for large-scale simulation tools (C++).",
+    "Integrated database persistence solutions for web applications.",
+    "Created resources for more efficient project management in Microsoft Excel."
+  ],
+  "tags": [
+    "C++",
+    "Databases",
+    "Web"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "title": "Sullivan Smith",
+  "tagline": "Computer Scientist",
+  "description": "Sullivan Smith is a computer scientist building simulation software, with interests in deep learning, embedded systems and aerospace.",
+  "url": "https://ssmith46.github.io",
+  "basePath": "/",
+  "language": "en",
+  "indexable": true,
+  "resume": "media/sullivan-smith-resume.pdf",
+  "resumeAliases": [
+    "sullivanSmithResume.pdf"
+  ],
+  "shareImage": "media/sullivan-smith-portrait.webp",
+  "footer": "Built to launch.",
+  "theme": {
+    "preset": "ember",
+    "fonts": "technical",
+    "radius": "soft",
+    "defaultMode": "system",
+    "motion": true
+  },
+  "nav": [
+    {
+      "label": "Projects",
+      "link": "page:projects"
+    },
+    {
+      "label": "Experience",
+      "link": "page:experience"
+    },
+    {
+      "label": "Mission",
+      "link": "page:mission"
+    },
+    {
+      "label": "Résumé",
+      "link": "resume",
+      "style": "button"
+    }
+  ],
+  "socials": [
+    {
+      "network": "linkedin",
+      "url": "https://linkedin.com/in/sullivan-smith-cs"
+    },
+    {
+      "network": "github",
+      "url": "https://github.com/ssmith46"
+    }
+  ],
+  "collections": [
+    {
+      "id": "projects",
+      "type": "project",
+      "label": "Projects",
+      "route": "projects",
+      "sort": "manual",
+      "order": [
+        "ship-classification-cnn",
+        "step-va-web-tool",
+        "stock-simulator",
+        "game-boy-development"
+      ]
+    },
+    {
+      "id": "experience",
+      "type": "experience",
+      "label": "Experience",
+      "route": "experience",
+      "sort": "newest"
+    },
+    {
+      "id": "education",
+      "type": "education",
+      "label": "Education",
+      "route": "education",
+      "sort": "newest"
+    },
+    {
+      "id": "writing",
+      "type": "post",
+      "label": "Write-ups",
+      "route": "writing",
+      "sort": "newest"
+    }
+  ]
+}

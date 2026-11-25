@@ -1,0 +1,16 @@
+{
+  "title": "Writing",
+  "slug": "writing",
+  "eyebrow": "Write-ups",
+  "hidden": true,
+  "intro": "Notes, deep-dives and lessons learned.",
+  "sections": [
+    {
+      "id": "posts",
+      "type": "collection",
+      "collection": "writing",
+      "layout": "list",
+      "emptyText": "First write-up coming soon."
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+/* Block: Space scene (engine/blocks/space/space.js, public/js/features/space.js)
+ * Space is always dark, whatever the site's light/dark mode — the panel is a
+ * window into deep space. Colors here are intentionally fixed.
+ */
+
+.space-scene {
+  --space-bg: #03040b;
+  --space-text: #f4f5fb;
+  --space-muted: rgb(226 230 255 / 0.72);
+  --space-line: rgb(226 230 255 / 0.16);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--space-text);
+  background:
+    radial-gradient(ellipse 60% 70% at 78% 30%, rgb(76 58 170 / 0.35), transparent 70%),
+    radial-gradient(ellipse 50% 60% at 12% 85%, rgb(20 110 140 / 0.25), transparent 70%),
+    radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 60%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 40% 80%, rgb(255 255 255 / 0.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 85% 15%, rgb(255 255 255 / 0.8) 50%, transparent 51%),
+    var(--space-bg);
+  min-height: 40rem;
+}
+
+/* Windowed (medium / tall): a rounded panel inside the page. */
+.section--space .space-scene:not(.space-scene--screen) {
+  width: min(100% - var(--gutter) * 2, var(--container-wide));
+  margin-inline: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.space-scene--medium {
+  min-height: 28rem;
+}
+
+.space-scene--screen {
+  min-height: calc(100svh - var(--header-h));
+}
+
+/* Full-screen scenes sit flush against the header. */
+.section--space:has(.space-scene--screen):not(.section--pad-compact):not(.section--pad-spacious) {
+  padding-block: 0;
+}
+
+.space-scene__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+/* Darken behind the text so it's always legible. */
+.space-scene__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgb(3 4 11 / 0.82) 0%, rgb(3 4 11 / 0.35) 55%, transparent 80%);
+}
+
+.space-scene--center .space-scene__veil {
+  background: radial-gradient(ellipse 55% 60% at 50% 50%, rgb(3 4 11 / 0.7), transparent 75%);
+}
+
+.space-scene__content {
+  position: relative;
+  padding-block: clamp(4rem, 10vw, 7rem);
+  pointer-events: none; /* let the canvas receive pointer events… */
+}
+
+.space-scene__content a,
+.space-scene__content button {
+  pointer-events: auto; /* …but keep links clickable */
+}
+
+.space-scene__content > * {
+  max-width: 40rem;
+}
+
+.space-scene--center .space-scene__content {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.space-scene__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--space-line);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.04);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--space-muted);
+}
+
+.space-scene__blip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.space-scene__heading {
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: calc(var(--display-tracking) - 0.01em);
+  color: var(--space-text);
+  text-shadow: 0 2px 30px rgb(3 4 11 / 0.6);
+}
+
+.space-scene__text {
+  margin-top: 1.5rem;
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--space-muted);
+}
+
+.space-scene__text strong {
+  color: var(--space-text);
+}
+
+.space-scene__text a {
+  color: var(--space-text);
+}
+
+.space-scene__actions {
+  margin-top: 2.25rem;
+}
+
+.space-scene--center .button-row {
+  justify-content: center;
+}
+
+.space-scene .button--secondary {
+  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(255 255 255 / 0.25);
+  color: var(--space-text);
+  backdrop-filter: blur(6px);
+}
+
+.space-scene .button--secondary:hover {
+  border-color: var(--space-text);
+}
+
+.telemetry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.25rem;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--space-line);
+}
+
+.telemetry__item dt {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(226 230 255 / 0.5);
+}
+
+.telemetry__item dd {
+  margin-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--space-text);
+}
+
+.space-scene__hint {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 1.25rem;
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(226 230 255 / 0.45);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.js .space-scene__hint {
+  display: inline-flex;
+}
+
+.space-scene.is-warping .space-scene__hint {
+  opacity: 0;
+}
+
+@media (max-width: 40rem) {
+  .space-scene__veil {
+    background: linear-gradient(180deg, rgb(3 4 11 / 0.35), rgb(3 4 11 / 0.75));
+  }
+
+  .space-scene__hint {
+    left: var(--gutter);
+    right: auto;
+  }
+}

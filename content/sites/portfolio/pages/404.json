@@ -1,0 +1,25 @@
+{
+  "title": "Page not found",
+  "showHeader": false,
+  "sections": [
+    {
+      "id": "lost",
+      "type": "space",
+      "eyebrow": "Error 404",
+      "heading": "Lost in space.",
+      "height": "screen",
+      "align": "center",
+      "ship": true,
+      "warp": true,
+      "text": "The page you’re looking for drifted out of range.",
+      "actions": [
+        {
+          "label": "Return to base",
+          "link": "page:home",
+          "style": "primary",
+          "icon": "home"
+        }
+      ]
+    }
+  ]
+}

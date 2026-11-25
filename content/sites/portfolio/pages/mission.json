@@ -1,0 +1,53 @@
+{
+  "title": "Mission",
+  "slug": "mission",
+  "showHeader": false,
+  "description": "Why I want to build aerospace software — and help make human life multi-planetary.",
+  "sections": [
+    {
+      "id": "launch",
+      "type": "space",
+      "eyebrow": "Mission",
+      "heading": "Software for a multi-planetary future.",
+      "height": "screen",
+      "align": "left",
+      "ship": true,
+      "warp": true,
+      "text": "After finishing an accelerated degree well ahead of my year, I’m pursuing a career in **aerospace software** — work that directly supports launch-based missions and the goal of making human life multi-planetary.",
+      "actions": [
+        {
+          "label": "See my work",
+          "link": "page:projects",
+          "style": "primary",
+          "icon": "arrow-right"
+        },
+        {
+          "label": "Résumé",
+          "link": "resume",
+          "style": "secondary"
+        }
+      ],
+      "telemetry": [
+        {
+          "label": "Status",
+          "value": "Go for launch"
+        },
+        {
+          "label": "Base",
+          "value": "Dahlgren, VA"
+        },
+        {
+          "label": "Trajectory",
+          "value": "Aerospace software"
+        }
+      ]
+    },
+    {
+      "id": "interests",
+      "type": "text",
+      "eyebrow": "Interests",
+      "heading": "What pulls me in",
+      "body": "### Aerospace\nI’m interested in pursuing work that directly supports an aerospace, launch-based mission — and I’m eager to help with the mission of making human life multi-planetary.\n\n### Computer architecture\nI like writing optimized software that works close to the hardware. Right now I’m researching how to develop games for the original Nintendo Game Boy."
+    }
+  ]
+}

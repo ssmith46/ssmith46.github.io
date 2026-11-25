@@ -1,0 +1,6 @@
+/* Block: Highlights (engine/blocks/stats/stats.js) — base .stats styles live in public/css/30-components.css */
+
+.stats-block .stats {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+}

@@ -1,0 +1,65 @@
+/* Collection type: Run (engine/collections/run/run.js) */
+
+.run-summary {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.bar-chart ol {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.5rem;
+  height: 12rem;
+}
+
+.bar-chart li {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.bar-chart__bar {
+  align-self: end;
+  height: max(var(--h), 3px);
+  border-radius: var(--radius-sm) var(--radius-sm) 2px 2px;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 55%, transparent));
+  transition: filter 0.2s ease;
+}
+
+.bar-chart li:hover .bar-chart__bar {
+  filter: brightness(1.15);
+}
+
+.bar-chart__label {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--faint);
+}
+
+.run-kind {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.run-kind--race {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.run-kind--long,
+.run-kind--tempo,
+.run-kind--intervals {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}

@@ -1,0 +1,97 @@
+/* Block: Links (engine/blocks/links/links.js) */
+
+.link-list--cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+}
+
+.link-list__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.link-list--cards .link-list__item {
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition: transform 0.3s var(--ease-spring), border-color 0.2s ease, box-shadow 0.3s ease;
+}
+
+.link-list--cards .link-list__item:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.link-list--list {
+  border-top: 1px solid var(--border);
+}
+
+.link-list--list .link-list__item {
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.link-list__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.link-list__text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.link-list__label {
+  font-weight: 600;
+}
+
+.link-list__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.link-list__arrow {
+  color: var(--faint);
+  transition: transform 0.3s var(--ease-spring), color 0.2s ease;
+}
+
+.link-list__item:hover .link-list__arrow {
+  color: var(--accent-text);
+  transform: translateX(3px);
+}
+
+.link-list--pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.link-list--pills .link-list__item {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+}
+
+.link-list--pills .link-list__desc,
+.link-list--pills .link-list__icon {
+  display: none;
+}
+
+.link-list--pills .link-list__item:hover {
+  border-color: var(--text);
+}

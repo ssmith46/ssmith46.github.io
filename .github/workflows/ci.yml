@@ -1,0 +1,23 @@
+# Runs the test suite and a full build on pull requests, so changes to the
+# engine, admin or content can't break the live site unnoticed.
+name: Checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Unit tests
+        run: node --test "tests/*.test.mjs"
+      - name: Build
+        run: node tools/build.mjs

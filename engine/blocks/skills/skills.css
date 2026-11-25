@@ -1,0 +1,30 @@
+/* Block: Skills (engine/blocks/skills/skills.js) */
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+}
+
+.skill-group {
+  padding: 1.25rem 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.skill-group__label {
+  margin-bottom: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.skill-group .tag {
+  font-size: 0.78rem;
+  background: var(--bg);
+  color: var(--text);
+}

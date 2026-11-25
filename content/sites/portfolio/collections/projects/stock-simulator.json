@@ -1,0 +1,19 @@
+{
+  "title": "Stock Simulator",
+  "summary": "A command-line stock market simulator written in C++.",
+  "date": "2024-09",
+  "dateLabel": "Fall 2024",
+  "tags": [
+    "C++",
+    "OOP",
+    "CLI"
+  ],
+  "links": [
+    {
+      "label": "Source code",
+      "link": "https://github.com/ssmith46/stock_simulator"
+    }
+  ],
+  "body": "## Overview\nA command line application created using C++.\n\n## What I did\n- Designed an intuitive and accessible command line stock simulator.\n- Implemented the design using C++ class inheritance.\n- Documented the project with comprehensive comments and usability guidelines.",
+  "featured": true
+}

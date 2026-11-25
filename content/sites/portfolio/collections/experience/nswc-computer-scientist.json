@@ -1,0 +1,18 @@
+{
+  "role": "Computer Scientist",
+  "organization": "Naval Surface Warfare Center",
+  "location": "Dahlgren, VA",
+  "start": "2025-06",
+  "end": "",
+  "highlights": [
+    "Provide support for a simulation tool used in a live, virtual, constructive setting.",
+    "Manage configuration changes using systems-engineering best practices.",
+    "Troubleshoot complex system failures using generated log files.",
+    "Active DoD Secret clearance."
+  ],
+  "tags": [
+    "C++",
+    "Simulation",
+    "Configuration management"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Projects",
+  "slug": "projects",
+  "eyebrow": "Work",
+  "intro": "A selection of things I’ve built — from deep learning experiments to a web tool for a non-profit. Each one has a short write-up.",
+  "sections": [
+    {
+      "id": "all-projects",
+      "type": "collection",
+      "collection": "projects",
+      "layout": "grid"
+    }
+  ]
+}

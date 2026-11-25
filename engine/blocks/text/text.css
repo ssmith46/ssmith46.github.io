@@ -1,0 +1,29 @@
+/* Block: Text (engine/blocks/text/text.js) */
+
+.text-block--narrow {
+  max-width: calc(var(--container-narrow) + var(--gutter) * 2);
+}
+
+.text-block--center {
+  text-align: center;
+}
+
+.text-block--center .eyebrow {
+  justify-content: center;
+}
+
+.text-block__heading {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  margin-bottom: 1.5rem;
+}
+
+.text-block .prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.text-block--center .prose ul,
+.text-block--center .prose ol {
+  display: inline-block;
+  text-align: left;
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Home",
+  "description": "",
+  "sections": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "layout": "split",
+      "badge": "Computer Scientist · NSWC Dahlgren",
+      "eyebrow": "Hi, I’m",
+      "title": "Sullivan Smith",
+      "subtitle": "Building software for systems that fly.",
+      "intro": "Computer Science graduate student with interests in deep learning, embedded systems, and software engineering. I enjoy exploring complex technical problems, and continuously learning across different areas of computing. Outside of tech, I’m a competitive runner and a fan of strategy-heavy board games.",
+      "image": "media/sullivan-smith-portrait.webp",
+      "imageAlt": "Portrait of Sullivan Smith smiling, wearing a plaid shirt",
+      "actions": [
+        {
+          "label": "Download résumé",
+          "link": "resume",
+          "style": "primary",
+          "icon": "download"
+        },
+        {
+          "label": "See my work",
+          "link": "page:projects",
+          "style": "secondary",
+          "icon": "arrow-right"
+        }
+      ],
+      "showSocials": true
+    },
+    {
+      "id": "featured",
+      "type": "collection",
+      "collection": "projects",
+      "layout": "grid",
+      "eyebrow": "Selected work",
+      "heading": "Projects",
+      "limit": 3,
+      "featuredOnly": true,
+      "moreLabel": "All projects",
+      "moreLink": "page:projects"
+    },
+    {
+      "id": "journey",
+      "type": "collection",
+      "collection": "experience",
+      "layout": "timeline",
+      "eyebrow": "Experience",
+      "heading": "Where I’ve worked",
+      "background": "subtle"
+    },
+    {
+      "id": "contact",
+      "type": "cta",
+      "style": "banner",
+      "eyebrow": "Get in touch",
+      "heading": "Let’s build something that flies.",
+      "text": "I’m always happy to talk about aerospace software, simulation, and deep learning.",
+      "actions": [
+        {
+          "label": "Connect on LinkedIn",
+          "link": "https://linkedin.com/in/sullivan-smith-cs",
+          "style": "primary",
+          "icon": "linkedin"
+        },
+        {
+          "label": "Résumé",
+          "link": "resume",
+          "style": "secondary"
+        }
+      ]
+    }
+  ]
+}

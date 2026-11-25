@@ -1,0 +1,92 @@
+/* Collection type: Movie (engine/collections/movie/movie.js) */
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: 1.75rem 1.25rem;
+}
+
+.poster {
+  display: grid;
+  gap: 0.45rem;
+  text-decoration: none;
+}
+
+.poster__art {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+}
+
+.poster:hover .poster__art {
+  transform: translateY(-4px) rotate(-0.6deg);
+  box-shadow: var(--shadow-lg);
+}
+
+.poster__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster__placeholder {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-size: 1.1rem;
+  color: var(--muted);
+  background: linear-gradient(160deg, var(--accent-soft), var(--surface-2));
+}
+
+.poster__fav {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.poster__title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+}
+
+.poster__year {
+  color: var(--faint);
+  font-weight: 400;
+}
+
+.stars {
+  --star-size: 0.95rem;
+  position: relative;
+  display: inline-block;
+  font-size: var(--star-size);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: var(--border-strong);
+}
+
+.stars::before {
+  content: '★★★★★';
+  position: absolute;
+  inset: 0;
+  width: calc(var(--rating) / 5 * 100%);
+  overflow: hidden;
+  color: var(--accent);
+  white-space: nowrap;
+}

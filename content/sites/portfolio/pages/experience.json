@@ -1,0 +1,104 @@
+{
+  "title": "Experience",
+  "slug": "experience",
+  "eyebrow": "Background",
+  "intro": "Where I’ve worked, what I studied, and the tools I use.",
+  "sections": [
+    {
+      "id": "highlights",
+      "type": "stats",
+      "items": [
+        {
+          "value": "4.0",
+          "label": "GPA",
+          "detail": "B.S. Computer Science"
+        },
+        {
+          "value": "ΦΒΚ",
+          "label": "Phi Beta Kappa",
+          "detail": "Member"
+        },
+        {
+          "value": "2023",
+          "label": "At NSWC since",
+          "detail": "Intern → Computer Scientist"
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "type": "collection",
+      "collection": "experience",
+      "layout": "timeline",
+      "eyebrow": "Work",
+      "heading": "Experience"
+    },
+    {
+      "id": "school",
+      "type": "collection",
+      "collection": "education",
+      "layout": "timeline",
+      "eyebrow": "Education",
+      "heading": "Education"
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "eyebrow": "Toolbox",
+      "heading": "Skills",
+      "groups": [
+        {
+          "label": "Languages",
+          "items": [
+            "Python",
+            "Java",
+            "C/C++",
+            "PHP",
+            "SQL"
+          ]
+        },
+        {
+          "label": "Tools & frameworks",
+          "items": [
+            "Git",
+            "Flask",
+            "Keras",
+            "pip",
+            "JUnit"
+          ]
+        },
+        {
+          "label": "Databases",
+          "items": [
+            "SQL",
+            "Redis",
+            "MongoDB"
+          ]
+        },
+        {
+          "label": "Platforms",
+          "items": [
+            "Unix",
+            "Windows",
+            "macOS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resume-cta",
+      "type": "cta",
+      "style": "card",
+      "heading": "Want the one-page version?",
+      "text": "My résumé has everything above in a printable format.",
+      "actions": [
+        {
+          "label": "Download résumé",
+          "link": "resume",
+          "style": "primary",
+          "icon": "download"
+        }
+      ]
+    }
+  ]
+}

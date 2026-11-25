@@ -1,0 +1,14 @@
+{
+  "name": "ssmith46-site",
+  "private": true,
+  "description": "Sullivan Smith's personal websites: a zero-dependency static site engine with a browser-based admin.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "build": "node tools/build.mjs",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "new:block": "node tools/scaffold.mjs block",
+    "new:collection": "node tools/scaffold.mjs collection"
+  }
+}

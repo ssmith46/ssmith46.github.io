@@ -1,0 +1,318 @@
+/**
+ * 30-components.css — reusable pieces rendered by engine/core/ui.js and
+ * engine/layout/socials.js: buttons, tags, section headings, social links,
+ * stats, tables and admin-preview helpers.
+ */
+
+/* ── Buttons ───────────────────────────────────────── */
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 2.875rem;
+  padding-inline: 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.button .icon {
+  width: 1.1em;
+  height: 1.1em;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.button:hover .icon {
+  transform: translateX(2px);
+}
+
+.button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.button--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.15) inset, 0 8px 20px -10px var(--accent);
+}
+
+.button--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.15) inset, 0 14px 30px -12px var(--accent);
+}
+
+.button--secondary {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.button--secondary:hover {
+  border-color: var(--text);
+  transform: translateY(-1px);
+}
+
+.button--ghost {
+  height: auto;
+  padding: 0.25rem 0;
+  color: var(--text);
+  border-radius: 0;
+}
+
+.button--ghost span {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.3s var(--ease-out);
+}
+
+.button--ghost:hover span {
+  background-size: 100% 1px;
+}
+
+/* ── Tags ──────────────────────────────────────────── */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 1.625rem;
+  padding-inline: 0.625rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.tag--more {
+  background: transparent;
+  color: var(--faint);
+}
+
+/* ── Section heading ───────────────────────────────── */
+
+.section-heading {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 44rem;
+}
+
+.section-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading__title {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.section-heading__intro {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+
+/* ── Social links ──────────────────────────────────── */
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s var(--ease-spring);
+}
+
+.social-link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+}
+
+/* ── Back link ─────────────────────────────────────── */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.back-link .icon {
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.back-link:hover .icon {
+  transform: translateX(-3px);
+}
+
+/* ── Stats (used by the Highlights block and the run summary) ── */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(var(--count, 3), minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 1.5rem 0.5rem 0;
+}
+
+.stat + .stat {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+
+.stat__label {
+  order: 2;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.stat__value {
+  order: 1;
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-tracking);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1;
+  color: var(--text);
+}
+
+.stat__value small {
+  font-size: 0.4em;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.stat__detail {
+  order: 3;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@media (max-width: 40rem) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .stat:nth-child(even) {
+    padding-left: 1.25rem;
+  }
+}
+
+/* ── Tables ────────────────────────────────────────── */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.data-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--surface-2);
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Admin preview helpers (only rendered in preview mode) ── */
+
+.preview-empty,
+.preview-hidden,
+.block-missing {
+  margin-block: 1.5rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--faint);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.preview-hidden {
+  opacity: 0.6;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+[data-preview] [data-section-id].is-preview-focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}

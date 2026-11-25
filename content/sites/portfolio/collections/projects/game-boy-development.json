@@ -1,0 +1,19 @@
+{
+  "title": "Game Boy Development",
+  "summary": "Learning to write games for original Nintendo Game Boy hardware.",
+  "date": "2025-04",
+  "dateLabel": "Ongoing",
+  "tags": [
+    "Game Boy",
+    "Embedded",
+    "Computer Architecture"
+  ],
+  "links": [
+    {
+      "label": "Source code",
+      "link": "https://github.com/ssmith46/learningGB"
+    }
+  ],
+  "body": "## Overview\nI’m interested in developing optimized software that operates and manipulates computer hardware directly. This is an ongoing exploration of how to develop games for the Nintendo Game Boy.",
+  "featured": false
+}

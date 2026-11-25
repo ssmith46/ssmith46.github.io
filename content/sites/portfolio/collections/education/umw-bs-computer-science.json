@@ -1,0 +1,22 @@
+{
+  "degree": "B.S. in Computer Science",
+  "school": "University of Mary Washington",
+  "location": "Fredericksburg, VA",
+  "start": "",
+  "end": "2025-05",
+  "gpa": "4.0",
+  "honors": [
+    "President’s List — recognized consistently for outstanding academic performance.",
+    "Phi Beta Kappa member.",
+    "Ackerman Award — distinguished graduate of Computer Science."
+  ],
+  "coursework": [
+    "Operating Systems",
+    "Data Structures & Algorithms",
+    "Modeling & Simulation",
+    "Deep Learning",
+    "Theory of Computation",
+    "Databases",
+    "Computer Architecture"
+  ]
+}

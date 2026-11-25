@@ -1,0 +1,21 @@
+{
+  "title": "Step VA Web Tool",
+  "summary": "A web management tool built for a non-profit organization, delivered by a six-person team I led.",
+  "date": "2025-01",
+  "dateLabel": "Spring 2025",
+  "role": "Team lead",
+  "tags": [
+    "PHP",
+    "SQL",
+    "Agile",
+    "Leadership"
+  ],
+  "links": [
+    {
+      "label": "Source code",
+      "link": "https://github.com/ebrenna2/StepVA2025"
+    }
+  ],
+  "body": "## Overview\nA web management tool developed for a non-profit organization.\n\n## What I did\n- Followed agile development practices for requirements gathering and implementation.\n- Gained experience using PHP in combination with SQL database management.\n- Led a team of six people to a successful delivery.",
+  "featured": true
+}

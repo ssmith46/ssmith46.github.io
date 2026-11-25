@@ -75,8 +75,8 @@ test('the full build succeeds', async () => {
     assert.ok(result.pageCount > 0);
     assert.ok(fs.existsSync(path.join(out, 'index.html')));
     assert.ok(fs.existsSync(path.join(out, 'assets/site.css')));
-    assert.ok(fs.existsSync(path.join(out, 'admin/index.html')));
-    assert.ok(fs.existsSync(path.join(out, 'engine/registry.js')), 'admin needs the engine for previews');
+    assert.ok(!fs.existsSync(path.join(out, 'admin')), 'the live site must not contain the admin');
+    assert.ok(!fs.existsSync(path.join(out, 'edit-da-website')), 'the live site must not contain the admin');
   } finally {
     fs.rmSync(out, { recursive: true, force: true });
   }

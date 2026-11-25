@@ -46,7 +46,7 @@ async function rebuild(reason = '') {
   // Each build runs in a fresh Node process so edits to engine modules are
   // picked up (an in-process import would keep serving the cached modules).
   building = new Promise((resolve, reject) => {
-    execFile(process.execPath, [path.join(ROOT, 'tools/build.mjs')], { cwd: ROOT, env: { ...process.env, BUILD_EXTRA_HEAD: LIVE_RELOAD } }, (err, stdout, stderr) => {
+    execFile(process.execPath, [path.join(ROOT, 'tools/build.mjs')], { cwd: ROOT, env: { ...process.env, BUILD_EXTRA_HEAD: LIVE_RELOAD, BUILD_INCLUDE_ADMIN: '1' } }, (err, stdout, stderr) => {
       if (err) reject(new Error(stderr.trim() || err.message));
       else resolve(stdout);
     });
@@ -145,6 +145,18 @@ async function handleApi(req, res, url) {
         else writeFile(file, Buffer.from(change.content, change.encoding === 'base64' ? 'base64' : 'utf8'));
       }
       await rebuild('admin publish');
+
+      // Save each Publish as a local git commit of content/ (push when ready).
+      await new Promise((resolve) => {
+        execFile('git', ['add', 'content'], { cwd: ROOT }, () =>
+          execFile('git', ['commit', '-m', message, '--', 'content'], { cwd: ROOT }, (err, _out, stderr) => {
+            if (err) console.warn(`git commit skipped: ${(stderr || err.message).trim()}`);
+            else console.log(`✓ committed: ${message} (run "git push" to put it online)`);
+            resolve();
+          }),
+        );
+      });
+
       const head = headId();
       commitLog.push({ sha: head, message, date: new Date().toISOString(), author: 'Local editor' });
       return sendJson(res, 200, { commit: head });

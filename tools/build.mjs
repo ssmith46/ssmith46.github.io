@@ -62,7 +62,7 @@ function sitemap(bundle, routes) {
  * Build everything into `outDir`.
  * @param {{ root?: string, outDir?: string, extraHead?: string, quiet?: boolean }} [options]
  */
-export async function build({ root = ROOT, outDir = path.join(root, '_site'), extraHead = '', quiet = false } = {}) {
+export async function build({ root = ROOT, outDir = path.join(root, '_site'), extraHead = '', quiet = false, includeAdmin = false } = {}) {
   const started = Date.now();
   const log = quiet ? () => {} : (...a) => console.log(...a);
 
@@ -107,8 +107,12 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
   }
 
   // 4. Admin + engine (the admin imports ../../engine/* for live previews)
-  copyDir(path.join(root, 'admin'), path.join(outDir, 'admin'));
-  copyDir(path.join(root, 'engine'), path.join(outDir, 'engine'));
+    // 4. Admin + engine: local development only. The live site never contains
+  //    the admin; run `node tools/dev.mjs` to use it on your own computer.
+  if (includeAdmin) {
+    copyDir(path.join(root, 'admin'), path.join(outDir, 'admin'));
+    copyDir(path.join(root, 'engine'), path.join(outDir, 'engine'));
+  }
 
   // 5. Host files
   const rootSite = Object.values(sites).find((b) => b.site.basePath === '/');
@@ -124,7 +128,8 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
 // Run when invoked directly: `node tools/build.mjs`
 if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   // BUILD_EXTRA_HEAD lets the dev server inject its live-reload script.
-  build({ extraHead: process.env.BUILD_EXTRA_HEAD || '' }).catch((err) => {
+    // The dev server sets these to add live reload and the local-only admin.
+  build({ extraHead: process.env.BUILD_EXTRA_HEAD || '', includeAdmin: process.env.BUILD_INCLUDE_ADMIN === '1' }).catch((err) => {
     console.error(`\nBuild failed: ${err.stack || err.message}`);
     process.exit(1);
   });

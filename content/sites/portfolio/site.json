@@ -56,6 +56,7 @@
       "route": "projects",
       "sort": "manual",
       "order": [
+        "using-machine-learning-to-recognize-complexity-in-jeopardy-questions",
         "ship-classification-cnn",
         "step-va-web-tool",
         "stock-simulator",

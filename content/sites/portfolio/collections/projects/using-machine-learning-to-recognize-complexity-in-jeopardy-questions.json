@@ -1,0 +1,23 @@
+{
+  "tags": [
+    "Python",
+    "Keras",
+    "Pandas",
+    "Numpy",
+    "Matplotlib",
+    "XGBoost"
+  ],
+  "links": [
+    {
+      "link": "https://youtu.be/WoXDSuU4IT4",
+      "label": "Project Presentation Video"
+    }
+  ],
+  "featured": false,
+  "hidden": false,
+  "title": "Using Machine Learning to Recognize Complexity in Jeopardy Questions",
+  "summary": "The goal of this project was to create a model that could infer complexity from attributes of textual data without requiring semantic content of said text. ",
+  "body": "The goal of this project was to gain experiencing working with raw data in a machine learning environment. This project encompassed the full development process, including data harvesting, cleaning, formatting, augmentation, tokenization, and finally encoding. This project ultimately was unsuccessful in significantly beating the baseline established, and an investigation into why this was the case was also conducted. ",
+  "dateLabel": "Summer 2026",
+  "role": "Sole Developer"
+}

@@ -5,14 +5,17 @@
   "start": "2025-06",
   "end": "",
   "highlights": [
-    "Provide support for a simulation tool used in a live, virtual, constructive setting.",
+    "Provide both software, installation, and usability support for a simulation tool used in a live, virtual, constructive setting.",
     "Manage configuration changes using systems-engineering best practices.",
     "Troubleshoot complex system failures using generated log files.",
+    "Use and exploration of agentic AI tools to rapidly innovate and increase development cadence.",
     "Active DoD Secret clearance."
   ],
   "tags": [
     "C++",
     "Simulation",
-    "Configuration management"
-  ]
+    "Configuration management",
+    "Agentic AI"
+  ],
+  "url": "https://www.navsea.navy.mil/Home/Warfare-Centers/NSWC-Dahlgren/"
 }

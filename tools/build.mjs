@@ -107,7 +107,6 @@ export async function build({ root = ROOT, outDir = path.join(root, '_site'), ex
   }
 
   // 4. Admin + engine (the admin imports ../../engine/* for live previews)
-    // 4. Admin + engine: local development only. The live site never contains
   //    the admin; run `node tools/dev.mjs` to use it on your own computer.
   if (includeAdmin) {
     copyDir(path.join(root, 'admin'), path.join(outDir, 'admin'));
